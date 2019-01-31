@@ -1,0 +1,20 @@
+/* Copy buttons */
+button.copybtn {
+  webkit-transition: opacity .9s ease-in-out;
+  -o-transition: opacity .9s ease-in-out;
+  transition: opacity .9s ease-in-out;
+  opacity: 0;
+  padding: 6px 12px 8px 12px;
+  position: absolute;
+  left: 1px;
+  top: 1px;
+}
+div.highlight:hover .copybtn, div.highlight .copybtn:focus {
+    opacity: .3;
+}
+div.highlight .copybtn:hover {
+    opacity: .5;
+}
+div.highlight {
+    position: relative;
+}
