@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>EniwareNetwork Developer PKI Guide PKI &mdash; DEV PKI &amp; Edge Association Procedure 1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to DEV PKI &amp; Edge Association Procedure’s documentation!" href="index.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> DEV PKI & Edge Association Procedure
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">EniwareNetwork Developer PKI Guide PKI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configure-a-dns-name">1. Configure a DNS name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#development-pki-service">2. Development PKI service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-tomcat-with-tls-support">3. Configure Tomcat with TLS support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configure-development-settiings">4. Configure development settiings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#associate-a-new-edge">5. Associate a new edge</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">DEV PKI & Edge Association Procedure</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>EniwareNetwork Developer PKI Guide PKI</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/dev-pki.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="eniwarenetwork-developer-pki-guide-pki">
+<span id="dev-pki"></span><h1>EniwareNetwork Developer PKI Guide PKI<a class="headerlink" href="#eniwarenetwork-developer-pki-guide-pki" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="configure-a-dns-name">
+<span id="dev-pki-dns"></span><h2>1. Configure a DNS name<a class="headerlink" href="#configure-a-dns-name" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Transport_Layer_Security">Transport Layer Security</a> (TLS v.1.2/August 2008 - <span class="target" id="index-0"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc5246.html"><strong>RFC 5246</strong></a> ; TLS v.1.3/Audust 2018 - <span class="target" id="index-1"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc8446.html"><strong>RFC 8446</strong></a> ) require to set up a DNS name, which should be the <strong>name_of_your_machine</strong>, i.e. <code class="docutils literal notranslate"><span class="pre">eniware</span></code> in this example. You need to added it to your system’s host file in <code class="docutils literal notranslate"><span class="pre">/etc/hosts/</span></code> :</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span> <span class="n">localhost</span> <span class="n">eniware</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">To edit the <code class="docutils literal notranslate"><span class="pre">hosts</span></code> file type use the simple  text editor (<strong>nano</strong> for example: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">nano</span> <span class="pre">/etc/hosts</span></code>).</p>
+</div>
+</div>
+<div class="section" id="development-pki-service">
+<span id="dev-pki-service"></span><h2>2. Development PKI service<a class="headerlink" href="#development-pki-service" title="Permalink to this headline">¶</a></h2>
+<p>When EniwareEdges are registered and then associated with EniwareNet, the last is responsible for generating a certificate for the Edge, which must be signed by the EniwareNet <a class="reference external" href="https://en.wikipedia.org/wiki/Certificate_authority">certification authority</a> (<strong>CA</strong>) certificate. The format of these certificates is specified by the <a class="reference external" href="https://en.wikipedia.org/wiki/X.509">X.509</a> (<a class="reference external" href="https://www.itu.int/rec/T-REC-X.509/en">Recommendation ITU-T X.509</a>).
+The bundle from <code class="docutils literal notranslate"><span class="pre">org.eniware.central.user.pki.dev</span></code> project provides a simple PKI service for use during development. Close any other <code class="docutils literal notranslate"><span class="pre">central.user.pki.*</span></code> projects except <code class="docutils literal notranslate"><span class="pre">org.eniware.centrtal.user.pki.dev</span></code>.</p>
+<p>Launch the <a class="reference external" href="https://eniware-org.github.io/eniware-dev-docs/eclipse-set-guide.html#configure-osgi-runtime">OSGI platform</a> with this bundle deployed. The first time this bundle is deployed it will create a new self-signed root CA certificate and store it in the <code class="docutils literal notranslate"><span class="pre">/eniware-osgi-target/var/DeveloperCA/ca.jks</span></code> Java keystore. The password for this keystore is randomly generated and stored in file named <code class="docutils literal notranslate"><span class="pre">secret</span></code> in the same directory.</p>
+<p>The bundle also create a new webserver certificate for the <strong>name_of_your_machine</strong> DNS name (i.e. <code class="docutils literal notranslate"><span class="pre">eniware</span></code> in this example) and store this in keystore named <code class="docutils literal notranslate"><span class="pre">central.jks</span></code>. The password for this keystore is <strong>eniwareedge</strong>.</p>
+<p>Finally the bundle will create a <em>trust</em> keystore named <code class="docutils literal notranslate"><span class="pre">central-trust.jks</span></code>.</p>
+<p>Stop the OSGI platform in Eclipse after the creation of all of this files and continue configuring your enviroement.
+Copy the <code class="docutils literal notranslate"><span class="pre">central.jks</span></code> and <code class="docutils literal notranslate"><span class="pre">central-trust.jks</span></code> files to the <code class="docutils literal notranslate"><span class="pre">/eniware-osgi-target/conf/tls/</span></code> (create the <code class="docutils literal notranslate"><span class="pre">conf</span></code> and <code class="docutils literal notranslate"><span class="pre">tls</span></code> directories first). Do not move instead of copying these files because they will be created again at the next start of the OSGI platform.</p>
+</div>
+<div class="section" id="configure-tomcat-with-tls-support">
+<span id="dev-pki-tomcat"></span><h2>3. Configure Tomcat with TLS support<a class="headerlink" href="#configure-tomcat-with-tls-support" title="Permalink to this headline">¶</a></h2>
+<p>Open file <code class="docutils literal notranslate"><span class="pre">tomcat-server.xml</span></code> from <code class="docutils literal notranslate"><span class="pre">/eniware-osgi-target/config/</span></code>. Then add  TLS <code class="docutils literal notranslate"><span class="pre">Connector</span></code> element:</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Connector</span> <span class="n">port</span><span class="o">=</span><span class="s2">&quot;8683&quot;</span> <span class="n">protocol</span><span class="o">=</span><span class="s2">&quot;HTTP/1.1&quot;</span> <span class="n">SSLEnabled</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>
+   <span class="n">maxThreads</span><span class="o">=</span><span class="s2">&quot;25&quot;</span> <span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;https&quot;</span> <span class="n">secure</span><span class="o">=</span><span class="s2">&quot;true&quot;</span> <span class="n">sslProtocol</span><span class="o">=</span><span class="s2">&quot;TLS&quot;</span>
+   <span class="n">keyAlias</span><span class="o">=</span><span class="s2">&quot;web&quot;</span> <span class="n">keystoreType</span><span class="o">=</span><span class="s2">&quot;jks&quot;</span>
+   <span class="n">keystoreFile</span><span class="o">=</span><span class="s2">&quot;conf/tls/central.jks&quot;</span> <span class="n">keystorePass</span><span class="o">=</span><span class="s2">&quot;eniwareedge&quot;</span>
+   <span class="n">truststoreFile</span><span class="o">=</span><span class="s2">&quot;conf/tls/central.jks&quot;</span> <span class="n">truststorePass</span><span class="o">=</span><span class="s2">&quot;eniwareedge&quot;</span>
+   <span class="n">clientAuth</span><span class="o">=</span><span class="s2">&quot;want&quot;</span><span class="o">/&gt;</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">If you haven’t created already copy the <code class="docutils literal notranslate"><span class="pre">tomcat-server.xml</span></code> file from <code class="docutils literal notranslate"><span class="pre">/eniware-osgi-target/example/config</span></code>, open it and uncoment the code above.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code class="docutils literal notranslate"><span class="pre">port</span></code> number is important to note because it will be used later. The <code class="docutils literal notranslate"><span class="pre">keystorePass</span></code> and <code class="docutils literal notranslate"><span class="pre">truststorePass</span></code> are the same as in the key store and trust store.</p>
+</div>
+<p>In <code class="docutils literal notranslate"><span class="pre">tomcat-server.xml</span></code> file you must modify the <code class="docutils literal notranslate"><span class="pre">Engine</span></code> and <code class="docutils literal notranslate"><span class="pre">Host</span></code> elements to use the DNS name you created <a class="reference internal" href="#dev-pki-dns"><span class="std std-ref">earlier</span></a> and is the Command Name (<a class="reference external" href="https://support.dnsimple.com/articles/what-is-common-name/">CN</a>) portion of your webserver certificate subject:</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Engine</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Catalina&quot;</span> <span class="n">defaultHost</span><span class="o">=</span><span class="s2">&quot;name_of_your_machine&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">Host</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;name_of_your_machine&quot;</span> <span class="n">unpackWARs</span><span class="o">=</span><span class="s2">&quot;false&quot;</span> <span class="n">autoDeploy</span><span class="o">=</span><span class="s2">&quot;false&quot;</span> <span class="n">deployOnStartup</span><span class="o">=</span><span class="s2">&quot;false&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">Engine</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">eniware</span></code> as a <strong>name_of_your_machine</strong>, the example will look like this:</p>
+<div class="code last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">Engine</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Catalina&quot;</span> <span class="n">defaultHost</span><span class="o">=</span><span class="s2">&quot;eniware&quot;</span><span class="o">&gt;</span>
+   <span class="o">&lt;</span><span class="n">Host</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;eniware&quot;</span> <span class="n">unpackWARs</span><span class="o">=</span><span class="s2">&quot;false&quot;</span> <span class="n">autoDeploy</span><span class="o">=</span><span class="s2">&quot;false&quot;</span> <span class="n">deployOnStartup</span><span class="o">=</span><span class="s2">&quot;false&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">Engine</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="configure-development-settiings">
+<span id="dev-pki-settiings"></span><h2>4. Configure development settiings<a class="headerlink" href="#configure-development-settiings" title="Permalink to this headline">¶</a></h2>
+<p>You need configure some settings in the <code class="docutils literal notranslate"><span class="pre">/eniware-osgi-target/configurations/services/</span></code> directory:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Copy the <code class="docutils literal notranslate"><span class="pre">org.eniware.central.in.properties</span></code> file from <code class="docutils literal notranslate"><span class="pre">/org.eniware.central.in.biz/example/configuration/</span></code> project  and paste it in <code class="docutils literal notranslate"><span class="pre">/eniware-osgi-target/configurations/services</span></code> folder.</p>
+</li>
+<li><p class="first">Change the file extension to <code class="docutils literal notranslate"><span class="pre">.cfg</span></code> an open it:</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">###############################################################################</span>
+<span class="c1">#org.eniware.central.in Configuration Admin properties</span>
+<span class="c1">###############################################################################</span>
+
+<span class="c1">###############################################################################</span>
+<span class="c1">#SimpleNetworkIdentityBiz.host &lt;string&gt;</span>
+<span class="c1">#SimpleNetworkIdentityBiz.port &lt;integer&gt;</span>
+<span class="c1">#SimpleNetworkIdentityBiz.forceTLS &lt;boolean&gt;</span>
+<span class="c1">#The host identity values to use.</span>
+
+<span class="n">SimpleNetworkIdentityBiz</span><span class="o">.</span><span class="n">host</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>
+<span class="n">SimpleNetworkIdentityBiz</span><span class="o">.</span><span class="n">port</span> <span class="o">&lt;</span><span class="n">integer</span><span class="o">&gt;</span>
+<span class="n">SimpleNetworkIdentityBiz</span><span class="o">.</span><span class="n">forceTLS</span> <span class="o">&lt;</span><span class="n">boolean</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Edit this <code class="docutils literal notranslate"><span class="pre">org.eniware.central.in.cfg</span></code> file as it’s shown below:</p>
+</li>
+</ul>
+<blockquote>
+<div><div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SimpleNetworkIdentityBiz</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="n">eniware</span>
+<span class="n">SimpleNetworkIdentityBiz</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="mi">8683</span>
+<span class="n">SimpleNetworkIdentityBiz</span><span class="o">.</span><span class="n">forceTLS</span> <span class="o">=</span> <span class="n">true</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<ul class="last simple">
+<li><code class="docutils literal notranslate"><span class="pre">SimpleNetworkIdentityBiz.host</span></code> is the same as the <a class="reference internal" href="#dev-pki-dns"><span class="std std-ref">DNS name</span></a> <strong>name_of_your_machine</strong> you assigned earlier</li>
+<li><code class="docutils literal notranslate"><span class="pre">SimpleNetworkIdentityBiz.port</span></code> is the same <a class="reference internal" href="#dev-pki-tomcat"><span class="std std-ref">port number</span></a> that you configured the Tomcat server to use;</li>
+</ul>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>Open the project <code class="docutils literal notranslate"><span class="pre">org.eniware.central.user.pki.dev</span></code> and edit the java file <code class="docutils literal notranslate"><span class="pre">DevedgePKIBIZ.java</span></code></li>
+</ul>
+<blockquote>
+<div><div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WEBSERVER_KEYSTONE_PASSWORD</span> <span class="o">=</span> <span class="s2">&quot;your_password&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="admonition-todo admonition" id="index-2">
+<p class="first admonition-title">Todo</p>
+<p>Open project and edit java file org.eniware.central.user.pki.dev/src/org.eniware.central.user.pki.dev/DevedgePKIBIZ.java WEBSERVER_KEYSTONE_PASSWORD = ‘’your password’‘;</p>
+<p class="last">In the same java file find : log.info(“Development webserver keystore saved to {}; password is your password”, and edit the password.</p>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>You need to update the OSGI runtime in Eclipse so the node uses the <code class="docutils literal notranslate"><span class="pre">central-trust.jks</span></code> file as its <em>trust</em> store, enabling it to “trust” the development CA root certificate. Go to <strong>Run &gt; Run Configurations… &gt; OSGI Framework &gt; EniwareNetwork</strong> (or <strong>Name_of_your_OSGI_framework</strong>) and select the <strong>Arguments</strong> tab. Add the following to the <em>VM arguments</em> fields:</li>
+</ul>
+<blockquote>
+<div><div class="code highlight-default notranslate"><div class="highlight"><pre><span></span>-Djavax.net.ssl.trustStore=${workspace_loc:eniware-osgi-target}/conf/tls/central-trust.jks
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="associate-a-new-edge">
+<span id="dev-pki-new-edge"></span><h2>5. Associate a new edge<a class="headerlink" href="#associate-a-new-edge" title="Permalink to this headline">¶</a></h2>
+<p>Start up OSGI platform in Eclipse and then use EniwareUser app <code class="docutils literal notranslate"><span class="pre">localhost:8080/eniwareuser</span></code> to register yourself as a new EniwareNet user. You can use the <code class="docutils literal notranslate"><span class="pre">org.eniware.central.common.mail.mock</span></code> bundle to have the user registration code logged to the console rather than relying on actual email to be sent. Once registered, invite a new EniwareEdge (under the <strong>My Edges</strong> section). Copy the invitation code, then go to the EniwareEdge setup app <code class="docutils literal notranslate"><span class="pre">/associate</span></code>. Paste the invitation and complete the association process. Your new node should setup and get a new certificate and then be ready for general use</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to DEV PKI &amp; Edge Association Procedure’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, EniWARE.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/custom.js"></script>
+      <script type="text/javascript" src="_static/clipboard.min.js"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
