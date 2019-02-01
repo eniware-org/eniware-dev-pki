@@ -1,6 +1,6 @@
 .. _dev-pki:
 
-EniwareNetwork Developer PKI Guide PKI
+EniwareNetwork Developer PKI Guide
 =======================================
 
 
@@ -131,7 +131,7 @@ You need configure some settings in the ``/eniware-osgi-target/configurations/se
       
   .. todo:: Open project and edit java file org.eniware.central.user.pki.dev/src/org.eniware.central.user.pki.dev/DevedgePKIBIZ.java WEBSERVER_KEYSTONE_PASSWORD = ''your password'';
 
-   In the same java file find : log.info("Development webserver keystore saved to {}; password is your password", and edit the password.
+   In the same java file find : log.info("Development webserver keystore saved to {}; password is your password", and edit the password. 
 
  * You need to update the OSGI runtime in Eclipse so the node uses the ``central-trust.jks`` file as its *trust* store, enabling it to "trust" the development CA root certificate. Go to **Run > Run Configurations... > OSGI Framework > EniwareNetwork** (or **Name_of_your_OSGI_framework**) and select the **Arguments** tab. Add the following to the *VM arguments* fields:
  
