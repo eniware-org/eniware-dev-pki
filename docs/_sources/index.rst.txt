@@ -31,8 +31,7 @@ Welcome to DEV PKI & Edge Association Procedure's documentation!
 Introduction
 =============
 
-The comprehensive system required to provide public-key encryption and digital signature services is known as a `public-key infrastructure <https://en.wikipedia.org/wiki/Public_key_infrastructure>`_ (**PKI**)
-).
+The comprehensive system required to provide public-key encryption and digital signature services is known as a `public-key infrastructure <https://en.wikipedia.org/wiki/Public_key_infrastructure>`_ (**PKI**).
 A PKI establishes and maintains a trustworthy networking environment by providing key and certificate management services that enable encryption and digital signature capabilities across applications.
 
 This documentation describes how to set up **PKI support** when developing **EniwareEdge <-> EniwareNet** secure communication. 

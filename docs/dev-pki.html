@@ -252,16 +252,25 @@ Copy the <code class="docutils literal notranslate"><span class="pre">central.jk
 </div>
 </div></blockquote>
 <ul class="simple">
-<li>Open the project <code class="docutils literal notranslate"><span class="pre">org.eniware.central.user.pki.dev</span></code> and edit the java file <code class="docutils literal notranslate"><span class="pre">DevedgePKIBIZ.java</span></code></li>
+<li>Open the project <code class="docutils literal notranslate"><span class="pre">org.eniware.central.user.pki.dev/src/org.eniware.central.user.pki.dev</span></code> and edit the <strong>“your_password”</strong> in java file <code class="docutils literal notranslate"><span class="pre">DevedgePKIBIZ.java</span></code>:</li>
 </ul>
 <blockquote>
-<div><div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WEBSERVER_KEYSTONE_PASSWORD</span> <span class="o">=</span> <span class="s2">&quot;your_password&quot;</span><span class="p">;</span>
+<div><div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">private</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">WEBSERVER_KEYSTONE_PASSWORD</span> <span class="o">=</span> <span class="s2">&quot;your_password&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
-<div class="admonition-todo admonition" id="index-2">
-<p class="first admonition-title">Todo</p>
-<p>Open project and edit java file org.eniware.central.user.pki.dev/src/org.eniware.central.user.pki.dev/DevedgePKIBIZ.java WEBSERVER_KEYSTONE_PASSWORD = ‘’your password’‘;</p>
-<p class="last">In the same java file find : log.info(“Development webserver keystore saved to {}; password is your password”, and edit the password.</p>
+<p>For example:</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">private</span> <span class="n">static</span> <span class="n">final</span> <span class="n">String</span> <span class="n">WEBSERVER_KEYSTORE_PASSWORD</span> <span class="o">=</span> <span class="s2">&quot;eniwareedge&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>In the same java file locate the line with the code shown below, and also edit the password:</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Development webserver keystore saved to </span><span class="si">{}</span><span class="s2">; password is &lt;your_password&gt;&quot;</span><span class="p">,</span>
+             <span class="n">webserverKeyStoreFile</span><span class="o">.</span><span class="n">getAbsolutePath</span><span class="p">());</span>
+</pre></div>
+</div>
+<p>For example:</p>
+<div class="code highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Development webserver keystore saved to </span><span class="si">{}</span><span class="s2">; password is eniwareedge&quot;</span><span class="p">,</span>
+             <span class="n">webserverKeyStoreFile</span><span class="o">.</span><span class="n">getAbsolutePath</span><span class="p">());</span>
+</pre></div>
 </div>
 </div></blockquote>
 <ul class="simple">
